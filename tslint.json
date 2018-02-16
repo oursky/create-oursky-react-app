@@ -1,12 +1,9 @@
 {
   "extends": [
-    "tslint:recommended",
     "tslint-react",
     "tslint-config-prettier"
   ],
   "rules": {
-    "jsx-use-translation-function": true,
-    "no-var-requires": false,
-    "member-access": false
+    "jsx-use-translation-function": true
   }
 }
