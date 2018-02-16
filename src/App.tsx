@@ -4,7 +4,7 @@ import createStore from "./redux/createStore";
 import Provider from "./redux/Provider";
 import Consumer from "./redux/Consumer";
 import { AppLanguage, RootState } from "./redux/types";
-const styles = require("./App.module.scss");
+import styles from "./App.module.scss";
 
 class LanguageConsumer extends Consumer<AppLanguage> {}
 
