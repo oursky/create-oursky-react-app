@@ -1,0 +1,33 @@
+{
+  "name": "create-oursky-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "babel-polyfill": "6.26.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "@iawaknahc/react-scripts": "1.1.1-custom.1"
+  },
+  "devDependencies": {
+    "@types/react": "16.0.38",
+    "@types/react-dom": "16.0.4",
+    "prettier": "1.10.2",
+    "stylelint": "8.4.0",
+    "stylelint-config-recommended": "2.0.1",
+    "stylelint-no-unsupported-browser-features": "2.0.0",
+    "tslint": "5.9.1",
+    "tslint-config-prettier": "1.8.0",
+    "tslint-react": "3.5.1",
+    "typescript": "2.7.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "stylelint": "stylelint 'src/**/*.{css,scss}'",
+    "prettier": "prettier --list-different 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
+    "tslint": "tslint --project tsconfig.json --config tslint.json --format verbose",
+    "tsc": "tsc --noEmit",
+    "ci": "yarn run tsc && yarn run tslint && yarn run stylelint && yarn run prettier"
+  }
+}
