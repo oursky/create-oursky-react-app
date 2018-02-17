@@ -36,4 +36,6 @@ export interface ThunkDispatch<S, A extends AnyAction> {
 export type Dispatch = ReduxDispatch<RootAction> &
   ThunkDispatch<RootState, RootAction>;
 
-export type Store = ReduxStore<RootState, RootAction>;
+export interface Store extends ReduxStore<RootState, RootAction> {
+  dispatch: Dispatch;
+}
