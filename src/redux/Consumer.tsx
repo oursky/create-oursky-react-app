@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import { Unsubscribe } from "redux";
 import { RootState, Dispatch, Store } from "./types";
 
 export interface Props<S> {
@@ -11,14 +12,11 @@ interface LocalState<S> {
   selectedState: S;
 }
 
-type Subscription = () => void;
-type MaybeSubscription = Subscription | undefined;
-
 export default class Consumer<S> extends React.Component<
   Props<S>,
   LocalState<S>
 > {
-  _subscription: MaybeSubscription;
+  _subscription?: Unsubscribe;
 
   static contextTypes = {
     store: PropTypes.any,
