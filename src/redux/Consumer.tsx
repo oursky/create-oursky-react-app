@@ -12,6 +12,10 @@ interface LocalState<S> {
   selectedState: S;
 }
 
+interface Context {
+  store: Store;
+}
+
 export default class Consumer<S> extends React.Component<
   Props<S>,
   LocalState<S>
@@ -22,7 +26,7 @@ export default class Consumer<S> extends React.Component<
     store: PropTypes.any,
   };
 
-  constructor(props: Props<S>, context: { store: Store }) {
+  constructor(props: Props<S>, context: Context) {
     super(props, context);
     const { store } = context;
     const { selector } = props;
