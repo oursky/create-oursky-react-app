@@ -1,7 +1,7 @@
-import { AppState, RootAction } from "./types";
+import { AppState, AppLanguage, RootAction, ChangeLanguage } from "./types";
 
-export const defaultState: AppState = {
-  lang: "en",
+export const defaultState = {
+  lang: "en" as AppLanguage,
 };
 
 export default function reducer(
@@ -9,7 +9,7 @@ export default function reducer(
   action: RootAction
 ): AppState {
   switch (action.type) {
-    case "ChangeLanguage":
+    case ChangeLanguage:
       return {
         ...state,
         lang: action.payload,

@@ -7,23 +7,25 @@ import {
 export type AppLanguage = "en" | "zh-Hant";
 
 export interface AppState {
-  lang: AppLanguage;
+  readonly lang: AppLanguage;
 }
 
 export interface RootState {
-  app: AppState;
+  readonly app: AppState;
 }
 
 export interface GetState {
   (): RootState;
 }
 
-export interface ChangeLanguage {
-  type: "ChangeLanguage";
-  payload: AppLanguage;
+export const ChangeLanguage = "ChangeLanguage";
+
+export interface ChangeLanguageAction {
+  readonly type: typeof ChangeLanguage;
+  readonly payload: AppLanguage;
 }
 
-export type RootAction = ChangeLanguage;
+export type RootAction = ChangeLanguageAction;
 
 export interface Thunk<S, A extends AnyAction, R> {
   (dispatch: ReduxDispatch<A> & ThunkDispatch<S, A>, getState: () => S): R;
