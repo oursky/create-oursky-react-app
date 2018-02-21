@@ -8,7 +8,8 @@ export default function thunk<S, A extends AnyAction>() {
     Dispatch<A> & ThunkDispatch<S, A>
   > = api => (next: Dispatch<A>) => <R>(action: A | Thunk<S, A, R>) =>
     typeof action === "function"
-      ? action(api.dispatch, api.getState)
+      ? // tslint:disable:next no-unbound-method
+        action(api.dispatch, api.getState)
       : next(action);
 
   return thunkMiddleware;
