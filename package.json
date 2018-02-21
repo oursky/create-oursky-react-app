@@ -21,13 +21,13 @@
     "@types/react-intl": "2.3.5",
     "@types/react-redux": "5.0.15",
     "prettier": "1.10.2",
-    "stylelint": "8.4.0",
-    "stylelint-config-recommended": "2.0.1",
+    "stylelint": "9.1.0",
+    "stylelint-config-recommended": "2.1.0",
     "stylelint-no-unsupported-browser-features": "2.0.0",
     "tslint": "5.9.1",
     "tslint-config-prettier": "1.8.0",
     "tslint-react": "3.5.1",
-    "typescript": "2.7.1"
+    "typescript": "2.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
