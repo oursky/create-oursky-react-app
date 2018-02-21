@@ -1,4 +1,5 @@
 {
   "app.hello": "你好世界",
-  "app.changeLanguage": "轉換語言"
+  "app.changeLanguage": "轉換語言",
+  "app.inputPlaceholder": "佔位符"
 }

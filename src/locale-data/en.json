@@ -1,4 +1,5 @@
 {
   "app.hello": "Hello World!",
-  "app.changeLanguage": "Change Language"
+  "app.changeLanguage": "Change Language",
+  "app.inputPlaceholder": "Placeholder"
 }
