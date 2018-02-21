@@ -27,16 +27,31 @@ import "intl/locale-data/jsonp/zh-Hant-HK.js";
 // Traditional Chinese used in Taiwan
 // import "intl/locale-data/jsonp/zh-Hant-TW.js";
 
+// Add locale data for react-intl
+import { addLocaleData } from "react-intl";
+import reactIntlLocaleDataEn from "react-intl/locale-data/en";
+import reactIntlLocaleDataZh from "react-intl/locale-data/zh";
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 import createStore from "./redux/createStore";
+import ReduxIntlProvider from "./intl/ReduxIntlProvider";
 import App from "./App";
+import appLocaleDataEn from "./locale-data/en.json";
+import appLocaleDataZhHantHK from "./locale-data/zh-Hant-HK.json";
 
+addLocaleData(reactIntlLocaleDataEn);
+addLocaleData(reactIntlLocaleDataZh);
+const messagesByLocale = {
+  en: appLocaleDataEn,
+  "zh-Hant-HK": appLocaleDataZhHantHK,
+};
 const store = createStore();
 const element = (
   <Provider store={store}>
-    <App />
+    <ReduxIntlProvider messagesByLocale={messagesByLocale}>
+      <App />
+    </ReduxIntlProvider>
   </Provider>
 );
 render(element, document.getElementById("root"));

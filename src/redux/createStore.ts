@@ -5,7 +5,7 @@ import {
 } from "redux";
 import { Store, RootState, RootAction } from "./types";
 import thunk from "./thunk";
-import appReducer from "./appReducer";
+import { reducer as appReducer } from "./app";
 
 export default function createStore(): Store {
   return createReduxStore(
