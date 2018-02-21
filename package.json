@@ -5,9 +5,11 @@
   "dependencies": {
     "@iawaknahc/react-scripts": "1.1.1-custom.1",
     "babel-polyfill": "6.26.0",
+    "intl": "1.2.5",
     "prop-types": "15.6.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
+    "react-intl": "2.4.0",
     "react-redux": "5.0.7",
     "redux": "4.0.0-beta.2"
   },
@@ -15,6 +17,7 @@
     "@types/prop-types": "15.5.2",
     "@types/react": "16.0.38",
     "@types/react-dom": "16.0.4",
+    "@types/react-intl": "2.3.5",
     "@types/react-redux": "5.0.15",
     "prettier": "1.10.2",
     "stylelint": "8.4.0",
