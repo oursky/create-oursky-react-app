@@ -4,10 +4,10 @@ import {
   AnyAction,
 } from "redux";
 
-export type AppLanguage = "en" | "zh-Hant";
+export type AppLocale = "en" | "zh-Hant-HK";
 
 export interface AppState {
-  readonly lang: AppLanguage;
+  readonly lang: AppLocale;
 }
 
 export interface RootState {
@@ -18,14 +18,14 @@ export interface GetState {
   (): RootState;
 }
 
-export const ChangeLanguage = "ChangeLanguage";
+export const ChangeLocale = "ChangeLocale";
 
-export interface ChangeLanguageAction {
-  readonly type: typeof ChangeLanguage;
-  readonly payload: AppLanguage;
+export interface ChangeLocaleAction {
+  readonly type: typeof ChangeLocale;
+  readonly payload: AppLocale;
 }
 
-export type RootAction = ChangeLanguageAction;
+export type RootAction = ChangeLocaleAction;
 
 export interface Thunk<S, A extends AnyAction, R> {
   (dispatch: ReduxDispatch<A> & ThunkDispatch<S, A>, getState: () => S): R;

@@ -29,7 +29,7 @@ import "intl/locale-data/jsonp/en.js";
 // import "intl/locale-data/jsonp/zh-Hant.js"
 
 // Traditional Chinese used in Hong Kong
-// import "intl/locale-data/jsonp/zh-Hant-HK.js"
+import "intl/locale-data/jsonp/zh-Hant-HK.js";
 
 // Traditional Chinese used in Taiwan
 // import "intl/locale-data/jsonp/zh-Hant-TW.js"
