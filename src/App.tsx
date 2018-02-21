@@ -1,29 +1,16 @@
 import * as React from "react";
 import { PureComponent } from "react";
 import createStore from "./redux/createStore";
-import { Provider, Consumer } from "./redux/react";
-import { RootState } from "./redux/types";
+import { Provider } from "react-redux";
 import styles from "./App.module.scss";
-
-function translate(s: string): string {
-  return s;
-}
 
 const store = createStore();
 
 class App extends PureComponent {
-  render1 = (rootState: RootState) => {
-    return (
-      <div className={styles.container}>
-        {translate("Hello World!") + rootState.app.lang}
-      </div>
-    );
-  };
-
   render() {
     return (
       <Provider store={store}>
-        <Consumer>{this.render1}</Consumer>
+        <div className={styles.container} />
       </Provider>
     );
   }
