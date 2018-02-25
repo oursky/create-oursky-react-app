@@ -1,5 +1,7 @@
 {
   "app.hello": "Hello World!",
   "app.changeLanguage": "Change Language",
-  "app.inputPlaceholder": "Placeholder"
+  "app.inputPlaceholder": "Placeholder",
+  "app.formExample": "Form Example",
+  "app.scrollRestorationDemo": "Scroll Restoration Demo"
 }

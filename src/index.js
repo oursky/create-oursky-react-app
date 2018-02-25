@@ -34,8 +34,11 @@ import reactIntlLocaleDataZh from "react-intl/locale-data/zh";
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
 import createStore from "./redux/createStore";
 import ReduxIntlProvider from "./intl/ReduxIntlProvider";
+import { ScrollToTop } from "./router/scroll";
 import App from "./App";
 import appLocaleDataEn from "./locale-data/en.json";
 import appLocaleDataZhHantHK from "./locale-data/zh-Hant-HK.json";
@@ -50,7 +53,11 @@ const store = createStore();
 const element = (
   <Provider store={store}>
     <ReduxIntlProvider messagesByLocale={messagesByLocale}>
-      <App />
+      <BrowserRouter>
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
+      </BrowserRouter>
     </ReduxIntlProvider>
   </Provider>
 );
