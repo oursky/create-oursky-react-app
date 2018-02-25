@@ -8,6 +8,8 @@
     "at-rule-no-unknown": [true, {
       "ignoreAtRules": ["mixin", "include"]
     }],
-    "plugin/no-unsupported-browser-features": true
+    "plugin/no-unsupported-browser-features": [true, {
+      "ignore": ["viewport-units"]
+    }]
   }
 }

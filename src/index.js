@@ -31,6 +31,10 @@ import "intl/locale-data/jsonp/zh-Hant-HK.js";
 import { addLocaleData } from "react-intl";
 import reactIntlLocaleDataEn from "react-intl/locale-data/en";
 import reactIntlLocaleDataZh from "react-intl/locale-data/zh";
+
+// Apply global style
+import "./global.scss";
+
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
