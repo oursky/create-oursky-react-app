@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import { FormattedMessage, Input } from "./intl/components";
 import ChangeLocaleButton from "./components/ChangeLocaleButton";
-import styles from "./App.module.scss";
+import styles from "./Demo.module.scss";
 
 type LocalFormState = {
   inputValue: string;
@@ -36,15 +36,15 @@ class FormExample extends PureComponent<{}, LocalFormState> {
     return (
       <div className={styles.container}>
         <Input
-          placeholderId="app.inputPlaceholder"
+          placeholderId="demo.inputPlaceholder"
           onChange={this.onChange}
           onRef={this.onInputRef}
           value={this.state.inputValue}
         />
         <ChangeLocaleButton />
-        <FormattedMessage id="app.hello" />
+        <FormattedMessage id="demo.hello" />
         <Link to="/scroll-restoration-demo">
-          <FormattedMessage id="app.scrollRestorationDemo" />
+          <FormattedMessage id="demo.scrollRestorationDemo" />
         </Link>
       </div>
     );
@@ -54,11 +54,11 @@ class FormExample extends PureComponent<{}, LocalFormState> {
 const ScrollRestorationDemo = () => {
   return (
     <div className={styles.container}>
-      <FormattedMessage id="app.hello" />
+      <FormattedMessage id="demo.hello" />
       {[...Array(1000)].map((_, index) => {
         return (
           <Link key={index} to="/form-example">
-            <FormattedMessage id="app.formExample" />
+            <FormattedMessage id="demo.formExample" />
           </Link>
         );
       })}
@@ -66,7 +66,7 @@ const ScrollRestorationDemo = () => {
   );
 };
 
-class App extends React.Component<any> {
+class Demo extends React.Component<any> {
   render() {
     return (
       <Switch>
@@ -84,4 +84,4 @@ class App extends React.Component<any> {
   }
 }
 
-export default App;
+export default Demo;

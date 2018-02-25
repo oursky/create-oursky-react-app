@@ -1,7 +1,7 @@
 {
-  "app.hello": "你好世界",
-  "app.changeLanguage": "轉換語言",
-  "app.inputPlaceholder": "佔位符",
-  "app.formExample": "表格例子",
-  "app.scrollRestorationDemo": "滾動回復示範"
+  "demo.hello": "你好世界",
+  "demo.changeLanguage": "轉換語言",
+  "demo.inputPlaceholder": "佔位符",
+  "demo.formExample": "表格例子",
+  "demo.scrollRestorationDemo": "滾動回復示範"
 }

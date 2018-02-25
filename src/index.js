@@ -43,7 +43,7 @@ import { BrowserRouter } from "react-router-dom";
 import createStore from "./redux/createStore";
 import ReduxIntlProvider from "./intl/ReduxIntlProvider";
 import { ScrollToTop } from "./router/scroll";
-import App from "./App";
+import Demo from "./Demo";
 import appLocaleDataEn from "./locale-data/en.json";
 import appLocaleDataZhHantHK from "./locale-data/zh-Hant-HK.json";
 
@@ -59,7 +59,7 @@ const element = (
     <ReduxIntlProvider messagesByLocale={messagesByLocale}>
       <BrowserRouter>
         <ScrollToTop>
-          <App />
+          <Demo />
         </ScrollToTop>
       </BrowserRouter>
     </ReduxIntlProvider>
