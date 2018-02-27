@@ -1,16 +1,12 @@
 # How to use
 
-Assume our new project, with both frontend and backend, is called "foobar"
+Assume we want to instantiate this template at `foobar`.
 
 ```sh
-mkdir foobar
-cd foobar
-git init
-# the directory name "web" is just an arbitrary choice
-git clone --depth=1 https://github.com/oursky/create-oursky-react-app web
-rm -rf web/.git/
-# setup travis for BOTH our backend and frontend
+curl -sSL https://raw.githubusercontent.com/oursky/create-oursky-react-app/master/bootstrap.sh | sh -s foobar
 ```
+
+Remember to setup CI yourself.
 
 This repository is essentially create-react-app, so read their documentation.
 
