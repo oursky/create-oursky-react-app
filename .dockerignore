@@ -1,0 +1,5 @@
+*.sh
+*.md
+*.log
+build/
+node_modules/

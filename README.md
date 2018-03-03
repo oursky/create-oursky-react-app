@@ -14,6 +14,14 @@ Specifically, the additions to vanilla CRA can be viewed [here](https://github.c
 
 Note that some of the additions we made (CSS Modules and SASS) are going to be included in [CRA 2.0](https://github.com/facebook/create-react-app/issues/3815), so we may not need to fork react-scripts in the future.
 
+# How to add envvars
+
+We should add them in `/src/config.ts`. Details are in [CRA's doc](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables).
+
+# Deployment
+
+There is a sample Dockerfile at project root. Take a look at it.
+
 # What should be customized
 
 1. Edit `.browserslistrc` to change target browsers
