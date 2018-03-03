@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import { FormattedMessage, Input } from "./intl/components";
 import ChangeLocaleButton from "./components/ChangeLocaleButton";
+import { MY_API_SERVER_API_KEY } from "./config";
 import styles from "./Demo.module.scss";
 
 type LocalFormState = {
@@ -49,6 +50,7 @@ class FormExample extends PureComponent<{}, LocalFormState> {
         <Link className={styles.row} to="/scroll-restoration-demo">
           <FormattedMessage id="demo.scrollRestorationDemo" />
         </Link>
+        <p className={styles.row}>{"Envvar: " + MY_API_SERVER_API_KEY}</p>
       </div>
     );
   }
