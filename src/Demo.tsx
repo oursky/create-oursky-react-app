@@ -36,14 +36,17 @@ class FormExample extends PureComponent<{}, LocalFormState> {
     return (
       <div className={styles.container}>
         <Input
+          className={styles.row}
           placeholderId="demo.inputPlaceholder"
           onChange={this.onChange}
           onRef={this.onInputRef}
           value={this.state.inputValue}
         />
-        <ChangeLocaleButton />
-        <FormattedMessage id="demo.hello" />
-        <Link to="/scroll-restoration-demo">
+        <ChangeLocaleButton className={styles.row} />
+        <p className={styles.row}>
+          <FormattedMessage id="demo.hello" />
+        </p>
+        <Link className={styles.row} to="/scroll-restoration-demo">
           <FormattedMessage id="demo.scrollRestorationDemo" />
         </Link>
       </div>
@@ -54,10 +57,12 @@ class FormExample extends PureComponent<{}, LocalFormState> {
 const ScrollRestorationDemo = () => {
   return (
     <div className={styles.container}>
-      <FormattedMessage id="demo.hello" />
+      <p className={styles.row}>
+        <FormattedMessage id="demo.hello" />
+      </p>
       {[...Array(1000)].map((_, index) => {
         return (
-          <Link key={index} to="/form-example">
+          <Link className={styles.row} key={index} to="/form-example">
             <FormattedMessage id="demo.formExample" />
           </Link>
         );

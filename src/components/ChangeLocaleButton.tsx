@@ -7,8 +7,9 @@ import { FormattedMessage } from "../intl/components";
 import { changeLocale } from "../redux/app";
 
 interface Props {
-  readonly locale: AppLocale;
-  readonly changeLocale: typeof changeLocale;
+  className?: string;
+  locale: AppLocale;
+  changeLocale: typeof changeLocale;
 }
 
 class ChangeLocaleButton extends PureComponent<Props> {
@@ -35,7 +36,7 @@ class ChangeLocaleButton extends PureComponent<Props> {
 
   render() {
     return (
-      <button onClick={this.onClick}>
+      <button className={this.props.className} onClick={this.onClick}>
         <FormattedMessage id="app.changeLanguage" />
       </button>
     );
