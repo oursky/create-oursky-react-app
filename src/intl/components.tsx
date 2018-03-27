@@ -10,8 +10,6 @@ import {
   FormattedDate as FD,
   FormattedRelative as FR,
 } from "react-intl";
-// TODO: Replace Diff with Exclude (available from TypeScript >= 2.8)
-import { Diff } from "type-zoo";
 import { RootState } from "../redux/types";
 
 interface ForwardRef<T> {
@@ -87,7 +85,7 @@ export const FormattedRelative: React.SFC<FR.Props> = (props: FR.Props) => {
 // 5. Export the SFC
 type InputOriginalProps = React.InputHTMLAttributes<HTMLInputElement>;
 type InputProps = {
-  [P in Diff<keyof InputOriginalProps, "placeholder">]?: InputOriginalProps[P]
+  [P in Exclude<keyof InputOriginalProps, "placeholder">]?: InputOriginalProps[P]
 } & {
   placeholderId: string;
   placeholderValues?: Values;
