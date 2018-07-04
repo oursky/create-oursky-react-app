@@ -55,4 +55,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangeLocaleButton);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ChangeLocaleButton);

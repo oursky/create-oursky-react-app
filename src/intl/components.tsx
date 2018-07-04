@@ -85,7 +85,10 @@ export const FormattedRelative: React.SFC<FR.Props> = (props: FR.Props) => {
 // 5. Export the SFC
 type InputOriginalProps = React.InputHTMLAttributes<HTMLInputElement>;
 type InputProps = {
-  [P in Exclude<keyof InputOriginalProps, "placeholder">]?: InputOriginalProps[P]
+  [P in Exclude<
+    keyof InputOriginalProps,
+    "placeholder"
+  >]?: InputOriginalProps[P]
 } & {
   placeholderId: string;
   placeholderValues?: Values;
