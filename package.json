@@ -1,5 +1,5 @@
 {
-  "name": "create-oursky-react-app",
+  "name": "create-react-app-oursky",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,8 +40,10 @@
     "stylelint": "stylelint --max-warnings 0 'src/**/*.{css,scss}'",
     "prettier": "prettier --list-different 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
-    "tslint": "tslint --project tsconfig.json --config tslint.json --format verbose",
+    "tslint":
+      "tslint --project tsconfig.json --config tslint.json --format verbose",
     "tsc": "tsc --noEmit",
-    "ci": "yarn run tsc && yarn run tslint && yarn run stylelint && yarn run prettier"
+    "ci":
+      "yarn run tsc && yarn run tslint && yarn run stylelint && yarn run prettier"
   }
 }

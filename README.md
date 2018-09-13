@@ -3,7 +3,7 @@
 Assume we want to instantiate this template at `foobar`.
 
 ```sh
-curl -sSL https://raw.githubusercontent.com/oursky/create-oursky-react-app/master/bootstrap.sh | sh -s foobar
+curl -sSL https://raw.githubusercontent.com/oursky/create-react-app-oursky/master/bootstrap.sh | sh -s foobar
 ```
 
 Remember to setup CI yourself.

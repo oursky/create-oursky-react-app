@@ -32,7 +32,7 @@ fi
 
 1>/dev/null 2>&1 git clone \
   --depth=1 \
-  https://github.com/oursky/create-oursky-react-app \
+  https://github.com/oursky/create-react-app-oursky \
   "$project_directory" \
 && rm -rf "$project_directory/.git" \
 && rm -f "$project_directory/bootstrap.sh" \
