@@ -2,8 +2,8 @@ import * as React from "react";
 import { PureComponent } from "react";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
+import { FormattedMessage } from "@oursky/react-messageformat";
 import { RootState, AppLocale } from "../redux/types";
-import { FormattedMessage } from "../intl/components";
 import { changeLocale } from "../redux/app";
 
 interface Props {
@@ -37,7 +37,7 @@ class ChangeLocaleButton extends PureComponent<Props> {
   render() {
     return (
       <button className={this.props.className} onClick={this.onClick}>
-        <FormattedMessage id="app.changeLanguage" />
+        <FormattedMessage id="demo.changeLanguage" />
       </button>
     );
   }

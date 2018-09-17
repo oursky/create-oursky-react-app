@@ -2,7 +2,8 @@ import * as React from "react";
 import { PureComponent } from "react";
 import { Route, Switch, Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import { FormattedMessage, Input } from "./intl/components";
+import { FormattedMessage } from "@oursky/react-messageformat";
+import Input from "./components/Input";
 import ChangeLocaleButton from "./components/ChangeLocaleButton";
 import { MY_API_SERVER_API_KEY } from "./config";
 import styles from "./Demo.module.scss";
@@ -37,10 +38,10 @@ class FormExample extends PureComponent<{}, LocalFormState> {
     return (
       <div className={styles.container}>
         <Input
+          ref={this.onInputRef}
           className={styles.row}
           placeholderId="demo.inputPlaceholder"
           onChange={this.onChange}
-          onRef={this.onInputRef}
           value={this.state.inputValue}
         />
         <ChangeLocaleButton className={styles.row} />

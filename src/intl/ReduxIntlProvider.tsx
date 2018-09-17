@@ -1,53 +1,48 @@
 import * as React from "react";
-import { ReactNode, Fragment, PureComponent } from "react";
 import { connect } from "react-redux";
-import { IntlProvider } from "react-intl";
-import { AppLocale, RootState } from "../redux/types";
-import ReduxSyncIntl from "./ReduxSyncIntl";
+import { Provider } from "@oursky/react-messageformat";
+import { RootState, AppLocale } from "../redux/types";
 
-interface OwnProps {
-  readonly messagesByLocale: {
-    [P in AppLocale]: {
-      [key: string]: string;
-    }
-  };
+const appLocaleDataEn = require("../locale-data/en.json");
+const appLocaleDataZhHantHK = require("../locale-data/zh-Hant-HK.json");
+
+const messagesByLocale: { [key: string]: { [key: string]: string } } = {
+  en: appLocaleDataEn,
+  "zh-Hant-HK": appLocaleDataZhHantHK,
+};
+
+export interface OwnProps {
+  children?: React.ReactNode;
 }
 
-interface ConnectedProps {
-  readonly locale: AppLocale;
+interface ConnectedStateProps {
+  locale: AppLocale;
 }
 
-type Props = OwnProps & ConnectedProps;
+type Props = OwnProps & ConnectedStateProps;
 
-// React supports rendering bare string
-function renderText(props: { children?: string }): ReactNode {
-  return props.children;
-}
-
-class ReduxIntlProvider extends PureComponent<Props> {
-  render() {
-    const messages = this.props.messagesByLocale[this.props.locale];
-    return (
-      <IntlProvider
-        locale={this.props.locale}
-        messages={messages}
-        textComponent={renderText}
-      >
-        <Fragment>
-          <ReduxSyncIntl />
-          {this.props.children}
-        </Fragment>
-      </IntlProvider>
-    );
-  }
-}
-
-function mapDispatchToProps(state: RootState): ConnectedProps {
+function mapStateToProps(state: RootState): ConnectedStateProps {
   return {
     locale: state.app.locale,
   };
 }
 
-export default connect(mapDispatchToProps)(
-  ReduxIntlProvider
-) as React.ComponentClass<OwnProps>;
+export default connect(mapStateToProps)(function ReduxIntlProvider(
+  props: Props
+) {
+  let locale = "";
+  switch (props.locale) {
+    case "en":
+      locale = "en";
+      break;
+    case "zh-Hant-HK":
+      locale = "zh";
+      break;
+  }
+  const messageByID = messagesByLocale[props.locale];
+  return (
+    <Provider locale={locale} messageByID={messageByID}>
+      {props.children}
+    </Provider>
+  );
+});

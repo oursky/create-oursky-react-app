@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@oursky/react-messageformat": "0.4.0",
     "@oursky/react-scripts": "1.1.1-custom.1",
     "babel-polyfill": "6.26.0",
     "history": "4.7.2",
@@ -10,7 +11,6 @@
     "prop-types": "15.6.2",
     "react": "16.5.1",
     "react-dom": "16.5.1",
-    "react-intl": "2.5.0",
     "react-redux": "5.0.7",
     "react-router": "4.3.1",
     "react-router-dom": "4.3.1",
@@ -21,7 +21,6 @@
     "@types/prop-types": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "@types/react-intl": "*",
     "@types/react-redux": "*",
     "@types/react-router": "*",
     "@types/react-router-dom": "*",
@@ -39,7 +38,6 @@
     "@types/prop-types": "15.5.5",
     "@types/react": "16.4.14",
     "@types/react-dom": "16.0.7",
-    "@types/react-intl": "2.3.11",
     "@types/react-redux": "6.0.9",
     "@types/react-router": "4.0.31",
     "@types/react-router-dom": "4.3.1"
@@ -50,10 +48,8 @@
     "stylelint": "stylelint --max-warnings 0 'src/**/*.{css,scss}'",
     "prettier": "prettier --list-different 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss}'",
-    "tslint":
-      "tslint --project tsconfig.json --config tslint.json --format verbose",
+    "tslint": "tslint --project tsconfig.json --config tslint.json --format verbose",
     "tsc": "tsc --noEmit",
-    "ci":
-      "yarn run tsc && yarn run tslint && yarn run stylelint && yarn run prettier"
+    "ci": "yarn run tsc && yarn run tslint && yarn run stylelint && yarn run prettier"
   }
 }
