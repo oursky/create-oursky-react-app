@@ -1,13 +1,16 @@
 {
+  "include": [
+    "src"
+  ],
   "compilerOptions": {
-    "target": "es5",
-    "module": "es6",
-    "lib": ["es6", "dom"],
-    "jsx": "react",
+    "target": "ES5",
+    "module": "esnext",
+    "lib": [
+      "ES6",
+      "DOM"
+    ],
+    "jsx": "preserve",
     "moduleResolution": "node",
-    "rootDir": "src",
-    "outDir": "build/dist",
-    "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "downlevelIteration": true,
@@ -15,15 +18,13 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true
+  }
 }
