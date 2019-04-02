@@ -13,4 +13,5 @@ git diff # To see what were changed
 - prettier
 - eslint
 - stylelint
+- Strictest TypeScript compiler settings
 - [CSS Modules](https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet)
