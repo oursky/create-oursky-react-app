@@ -1,19 +1,22 @@
+#!/usr/bin/env python3
 import contextlib
 import json
 import os
 import subprocess
 import sys
 from collections import OrderedDict
+from distutils.version import StrictVersion
 from os.path import join
 
-browserslistrc = b"""\
-last 3 versions
-Android >= 4.4
-iOS >= 8
-Safari >= 8
-IE >= 9
-not OperaMini all
-"""
+browserslist = [
+    "last 2 chrome versions",
+    "last 2 firefox versions",
+    "Android >= 4.4",
+    "iOS >= 9",
+    "Safari >= 9",
+    "IE >= 11",
+]
+
 
 prettierrc = b"""\
 {
@@ -39,12 +42,6 @@ stylelintrc = b"""\
 }
 """
 
-eslintrc = b"""\
-{
-  "extends": ["@oursky"]
-}
-"""
-
 
 @contextlib.contextmanager
 def cd(dir):
@@ -56,50 +53,64 @@ def cd(dir):
         os.chdir(wd)
 
 
-def main():
-    target_dir = sys.argv[1]
+def ensure_react_scripts_version(pkg_json):
+    # Verify react-scripts >= 3
+    try:
+        react_scripts = pkg_json["dependencies"]["react-scripts"]
+    except KeyError:
+        react_scripts = pkg_json["devDependencies"]["react-scripts"]
+    except KeyError:
+        print(
+            "It seems that the project is not created with create-react-app",
+            file=sys.stderr
+        )
+        sys.exit(1)
+    try:
+        major = StrictVersion(react_scripts).version[0]
+    except ValueError:
+        print(
+            "Expected react-scripts to be an exact version, but it is {}".format(react_scripts),
+            file=sys.stderr
+        )
+        sys.exit(1)
+    if major < 3:
+        print(
+            "Expected react-scripts to be at least >=3, but it is {}".format(react_scripts),
+            file=sys.stderr
+        )
+        sys.exit(1)
 
-    pkg = join(target_dir, "package.json")
-    with open(pkg, "rb") as f:
-        pkg_json = json.load(f, object_pairs_hook=OrderedDict)
-        # Remove "eslintConfig" and "browserslist" from package.json
-        try:
-            del pkg_json["eslintConfig"]
-        except KeyError:
-            pass
-        try:
-            del pkg_json["browserslist"]
-        except KeyError:
-            pass
-        # Add stylelint format
-        scripts = pkg_json["scripts"]
-        scripts["stylelint"] = \
-            "stylelint --max-warnings 0 'src/**/*.{css,scss}'"
-        scripts["format"] = \
-            "prettier --write --list-different 'src/**/*.{js,jsx,ts,tsx,css,scss}'"
-        scripts["lint"] = "eslint 'src/**/*.{js,jsx,ts,tsx}'"
 
-    # Write changes to package.json
-    with open(pkg, "w", encoding="utf-8") as f:
-        json.dump(pkg_json, f, ensure_ascii=False, indent=2)
+def add_scripts(pkg_json):
+    scripts = pkg_json["scripts"]
+    scripts["stylelint"] = \
+        "stylelint --max-warnings 0 'src/**/*.{css,scss}'"
+    scripts["format"] = \
+        "prettier --write --list-different 'src/**/*.{js,jsx,ts,tsx,css,scss}'"
+    scripts["lint"] = "eslint 'src/**/*.{js,jsx,ts,tsx}'"
 
-    # Write .browserslistrc
-    with open(join(target_dir, ".browserslistrc"), "wb") as f:
-        f.write(browserslistrc)
 
-    # Write .prettierrc
-    with open(join(target_dir, ".prettierrc"), "wb") as f:
-        f.write(prettierrc)
+def set_eslint_config(pkg_json):
+    pkg_json["eslintConfig"] = {
+        "extends": ["@oursky"],
+    }
 
-    # Write .stylelintrc
-    with open(join(target_dir, ".stylelintrc"), "wb") as f:
-        f.write(stylelintrc)
 
-    # Write .eslintrc
-    with open(join(target_dir, ".eslintrc"), "wb") as f:
-        f.write(eslintrc)
+def set_conventional_browserlist(pkg_json):
+    pkg_json["browserslist"]["production"] = browserslist
 
-    # Write tsconfig.json
+
+def write_bytes(path, b):
+    with open(path, "wb") as f:
+        f.write(b)
+
+
+def write_json(path, j):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(j, f, ensure_ascii=False, indent=2)
+
+
+def write_tsconfig(target_dir):
     try:
         with open(join(target_dir, "tsconfig.json"), "rb") as f:
             tsconfig_json = json.load(f, object_pairs_hook=OrderedDict)
@@ -118,7 +129,8 @@ def main():
     with open(join(target_dir, "tsconfig.json"), "w", encoding="utf-8") as f:
         json.dump(tsconfig_json, f, ensure_ascii=False, indent=2)
 
-    # Install node-sass prettier stylelint eslint
+
+def install_deps(target_dir):
     with cd(target_dir):
         subprocess.run([
             "yarn",
@@ -139,6 +151,22 @@ def main():
             "@typescript-eslint/parser",
             "@oursky/eslint-config",
         ])
+
+
+def main():
+    target_dir = sys.argv[1]
+    pkg = join(target_dir, "package.json")
+    with open(pkg, "rb") as f:
+        pkg_json = json.load(f, object_pairs_hook=OrderedDict)
+    ensure_react_scripts_version(pkg_json)
+    set_eslint_config(pkg_json)
+    set_conventional_browserlist(pkg_json)
+    add_scripts(pkg_json)
+    write_json(pkg, pkg_json)
+    write_bytes(join(target_dir, ".prettierrc"), prettierrc)
+    write_bytes(join(target_dir, ".stylelintrc"), stylelintrc)
+    write_tsconfig(target_dir)
+    install_deps(target_dir)
 
 
 if __name__ == "__main__":
