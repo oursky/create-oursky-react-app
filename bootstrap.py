@@ -58,13 +58,14 @@ def ensure_react_scripts_version(pkg_json):
     try:
         react_scripts = pkg_json["dependencies"]["react-scripts"]
     except KeyError:
-        react_scripts = pkg_json["devDependencies"]["react-scripts"]
-    except KeyError:
-        print(
-            "It seems that the project is not created with create-react-app",
-            file=sys.stderr
-        )
-        sys.exit(1)
+        try:
+            react_scripts = pkg_json["devDependencies"]["react-scripts"]
+        except KeyError:
+            print(
+                "It seems that the project is not created with create-react-app",
+                file=sys.stderr
+            )
+            sys.exit(1)
     try:
         major = StrictVersion(react_scripts).version[0]
     except ValueError:
