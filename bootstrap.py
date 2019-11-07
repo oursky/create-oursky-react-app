@@ -89,6 +89,7 @@ def add_scripts(pkg_json):
     scripts["format"] = \
         "prettier --write --list-different 'src/**/*.{js,jsx,ts,tsx,css,scss}'"
     scripts["lint"] = "eslint 'src/**/*.{js,jsx,ts,tsx}'"
+    scripts["typecheck"] = "tsc --noEmit"
 
 
 def set_eslint_config(pkg_json):
