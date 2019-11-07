@@ -144,12 +144,6 @@ def install_deps(target_dir):
             "stylelint-config-recommended",
             "stylelint-no-unsupported-browser-features",
             "eslint",
-            "eslint-config-prettier",
-            "eslint-plugin-react",
-            "eslint-plugin-react-hooks",
-            "eslint-plugin-react-native",
-            "@typescript-eslint/eslint-plugin",
-            "@typescript-eslint/parser",
             "@oursky/eslint-config",
         ])
 
